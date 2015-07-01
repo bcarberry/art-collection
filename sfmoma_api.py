@@ -1,14 +1,15 @@
 import requests
+import json
 
 def get_artworks():
 	''' Get all the artworks with images from the SFMOMA Collection API '''
+	f = open('credentials.json').read()
+	login = json.loads(f)
 
-	username = 'sfmoma01'
-	password = 'art+data'
+	username = login['username']
+	password = login['password']
+
 	url = 'http://api.sfmoma.org/collection'
-	headers = { 'username': username, 'password': password } 
+	r = requests.get(url, auth=(username, password)).json()
 
-    r = requests.get(url, headers=headers).json()
-
-    print r
-    return r
+	return 'success'

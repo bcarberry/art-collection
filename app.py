@@ -1,6 +1,6 @@
 from flask import Flask, request, render_template, jsonify, session, redirect
 import requests
-import * from sfmoma_api
+from sfmoma_api import *
 
 app = Flask(__name__)
 
@@ -9,7 +9,7 @@ def index():
 	''' Show all artworks with images '''
 
 	print get_artworks()
-	
+
 	return render_template('index.html')
 
 
