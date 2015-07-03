@@ -1,14 +1,14 @@
 from flask import Flask, request, render_template, jsonify, session, redirect
 import requests
-from sfmoma_api import *
+from flask.ext.sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://localhost/art'
+db = SQLAlchemy(app)
 
 @app.route('/')
 def index():
 	''' Show all artworks with images '''
-
-	print get_artworks()
 
 	return render_template('index.html')
 
