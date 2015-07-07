@@ -46,13 +46,15 @@ def save_artworks():
 	return artworks
 
 
-# Add the artworks to the database
 def add_artwork():
+	''' Add all the artworks to the database as Art objects '''
 	for i in artworks:
-		new_artwork = Artwork(title=i['title'],)
-
-
+		new_artwork = Art(title=i['title'], artist=i['artist'], image=i['image'], artwork_id=i['artwork_id'])
+		db.session.add(new_artwork)
+    	db.session.commit()
+	return 'success'
 
 
 if __name__ == "__main__":
 	save_artworks()
+	add_artwork()
