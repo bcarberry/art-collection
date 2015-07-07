@@ -1,4 +1,10 @@
-from app import db
+from app import app, db
+from flask.ext.script import Manager
+from flask.ext.migrate import Migrate, MigrateCommand
+
+migrate = Migrate(app, db)
+manager = Manager(app)
+manager.add_command('db', MigrateCommand)
 
 # Create a table for many-to-many hearts relationships
 hearts = db.Table('hearts',
@@ -44,6 +50,4 @@ class User(db.Model):
 
 
 if __name__ == '__main__':
-	print 'Creating database tables...'
-	db.create_all()
-	print 'Done!'
+	manager.run()

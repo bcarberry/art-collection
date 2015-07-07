@@ -1,0 +1,11 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<a href="/login"><button class="btn btn-success">Sign in</button></a>
+
+<h1>Heart Art</h1>
+<h2>Hi {{ user.given_name }}</h2>
+<p>{{ user }}</p>
+<!-- Art goes here -->
+
+{% endblock %}

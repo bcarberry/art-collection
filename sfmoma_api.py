@@ -2,12 +2,7 @@ import requests
 import json
 import pprint
 from models import *
-
-# Get API credentials from local file
-f = open('credentials.json').read()
-login = json.loads(f)
-username = login['username']
-password = login['password']
+from credentials import *
 
 # Artworks will be saved to a list of dictionaries
 artworks = []
